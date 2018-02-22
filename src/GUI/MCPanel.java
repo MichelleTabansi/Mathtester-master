@@ -7,7 +7,11 @@ package GUI;
 
 import DataStructure.Questions;
 import Main.MainFrame;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.Enumeration;
+import javax.imageio.ImageIO;
 import javax.swing.AbstractButton;
 import javax.swing.ButtonModel;
 import javax.swing.ImageIcon;
@@ -42,10 +46,12 @@ public class MCPanel extends javax.swing.JPanel {
         stemTextField.setText(cur.getStem());
         difficulty.setText(cur.getDifficulty()+"");
         name.setText(""+(frame.numQuestion+1));
-               
-      
+
+        ImageIcon image = new ImageIcon(cur.getImageFile());
+        JLabel imageLabel1 = new JLabel(image);
+        imageLabel.add(imageLabel1);
                 
-        
+       
         
         
     }

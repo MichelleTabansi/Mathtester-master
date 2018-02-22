@@ -19,6 +19,10 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 
 /**
  *
@@ -80,6 +84,7 @@ public class MainFrame extends javax.swing.JFrame {
             // Load file and read info to RAM from file
             BufferedReader loadFile = new BufferedReader(new FileReader(
                     filePath));
+     
 
             String input;
             // Continue to read in from text file 2 lines for each athlete
@@ -111,7 +116,9 @@ public class MainFrame extends javax.swing.JFrame {
                         difficulty = HARD;
                     }
                  
-                    questionList.add(new Questions(MULTIPLECHOICE, difficulty, stem, answerChoices,correctAnswer));
+                    String pictureString = "Pictures/"+loadFile.readLine();
+                    questionList.add(new Questions(MULTIPLECHOICE, difficulty, stem, answerChoices,correctAnswer,pictureString));
+                    
                     
                     System.out.println("ADD one");
                 }
@@ -136,6 +143,7 @@ public class MainFrame extends javax.swing.JFrame {
                     questionList.add(new Questions(FREERESPONSE,stem,correctAnswer,difficulty) );
                     
                 }
+                
 
             }
         } catch (IOException ex) {
@@ -175,6 +183,8 @@ public class MainFrame extends javax.swing.JFrame {
             
         }
     }
+    
+    
     public void loadQuestion()
     {
         if (numQuestion < questionList.size()) {
